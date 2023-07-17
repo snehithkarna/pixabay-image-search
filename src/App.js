@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import SearchBar from './components/SearchBar';
 import ImageList from './components/ImageList';
+import ImageDetail from './components/ImageDetail';
 
 function App() {
   const [images, setImages] = useState([]);
@@ -18,12 +20,16 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <SearchBar onSearch={onSearchSubmit} />
-      <ImageList images={images} />
-    </div>
+    <Router>
+      <div className="App">
+        <SearchBar onSearch={onSearchSubmit} />
+        <Routes>
+          <Route path="/" element={<ImageList images={images} />} />
+          <Route path="/image/:id" element={<ImageDetail />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
 export default App;
-
