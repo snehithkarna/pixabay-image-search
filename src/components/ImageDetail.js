@@ -18,12 +18,13 @@ function ImageDetail() {
   if (!image) return 'Loading...';
 
   return (
-    <div>
-      <h1>{image.user}</h1>
-      <img src={image.webformatURL} alt={image.tags} />
-      <p>{image.tags}</p>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px' }}>
+      <h2 style={{ textAlign: 'center' }}>UserName: {image.user}</h2>
+      <img src={image.webformatURL} alt={image.tags} style={{ maxWidth: '100%', height: 'auto' }} />
+      <p style={{ textAlign: 'center', marginTop: '20px' }}>Tags: {image.tags}</p>
     </div>
   );
 }
 
 export default ImageDetail;
+
